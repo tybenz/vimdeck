@@ -38,8 +38,9 @@ slides.each_with_index do |slide, i|
     end
   end
 
-  new_slide += header + "\n\n" if header
+  new_slide += header + "\n" if header
   new_slide += rest if rest
+  new_slide += "\n" * 20
 
 
   script += "b #{i+1}\n"

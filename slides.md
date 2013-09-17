@@ -8,14 +8,21 @@ Presentations with nothing but vim
 @tybenz // github.com/tybenz // tybenz.com
 
 
-# Example - Bullets
+# Numbered List
 
 1. Are you getting it yet?
 2. Is any of this making sense?
 3. How about now?
 
 
-# Example - Code
+# Bullets
+
+- First
+- Second
+- Third
+
+
+# Code
 
 ```javascript
 var x = true;
