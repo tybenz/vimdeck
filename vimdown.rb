@@ -9,7 +9,10 @@ slides = File.read('slides.md')
 
 slides = slides.split( "\n\n\n" )
 new_slides = []
-script = ''
+script = "noremap <PageUp> :bp<CR>\n"
+script += "noremap <Left> :bp<CR>\n"
+script += "noremap <PageDown> :bn<CR>\n"
+script += "noremap <Right> :bn<CR>\n"
 
 slides.each_with_index do |slide, i|
   new_slide = ''
@@ -65,4 +68,4 @@ File.open("presentation/z.vim", "w") do |file|
   file.write script
 end
 
-exec 'vim presentation/* -S presentation/z.vim'
+exec 'vim presentation/*.md -S presentation/z.vim'
