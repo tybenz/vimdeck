@@ -42,13 +42,13 @@ module Vimdeck
         elsif code_block && line.match( /```/ )
           code_block=false
         elsif !code_block
-          match = line.match( /##\s*(.*)\n/ )
+          match = line.match( /##\s*(.*)/ )
           if match && match[1]
-            slide.sub!( match[0], artii(match[1], "small") + "\n" )
+            slide.sub!( match[0], artii(match[1], "small") )
           else
-            match = line.match( /#\s*(.*)\n/ )
+            match = line.match( /#\s*(.*)/ )
             if match && match[1]
-              slide.sub!( match[0], artii(match[1], "large") + "\n" )
+              slide.sub!( match[0], artii(match[1], "large") )
             else
               match = line.match( /\!\[\]\(([^\(\)]*)\)/ )
               if match && match[1]

@@ -1,6 +1,6 @@
 # VIMDECK
 
-Presentations with nothing but vim
+## PURE AWESOME
 
 
 # VIM ROCKS!
