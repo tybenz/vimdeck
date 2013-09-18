@@ -1,3 +1,5 @@
 #!/usr/bin/env ruby
 
-exec File.dirname(__FILE__) + "/../lib/vimdeck.rb"
+require 'vimdeck'
+
+Vimdeck.slideshow(ARGV[0])

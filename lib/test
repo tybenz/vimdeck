@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+require './vimdeck2'
+
+Vimdeck.slideshow($1)
