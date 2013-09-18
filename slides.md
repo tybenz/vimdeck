@@ -8,7 +8,7 @@ Presentations with nothing but vim
 ![](img/vim.png)
 
 
-# Numbered List
+## Numbered List
 
 1. This is how a numbered list
 2. Looks in vimdeck
@@ -26,12 +26,13 @@ Presentations with nothing but vim
 
 Vimdeck does syntax highlighting too!
 
-```javascript
-var x = true;
+```ruby
+require 'erb'
 
-if ( x ) {
-  console.log( 'foo' );
-}
+template = ERB.new('template.erb')
+
+# Compile template
+template.result(binding)
 ```
 
 
