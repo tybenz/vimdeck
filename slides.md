@@ -1,4 +1,4 @@
-# VIMDOWN
+# VIMDECK
 
 Presentations with nothing but vim
 
@@ -11,7 +11,7 @@ Presentations with nothing but vim
 # Numbered List
 
 1. This is how a numbered list
-2. Looks in vimdown
+2. Looks in vimdeck
 3. What do you think?
 
 
@@ -24,7 +24,7 @@ Presentations with nothing but vim
 
 # Code
 
-Vimdown does syntax highlighting too!
+Vimdeck does syntax highlighting too!
 
 ```javascript
 var x = true;

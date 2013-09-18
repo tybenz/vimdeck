@@ -1,0 +1,3 @@
+#!/usr/bin/env ruby
+
+exec File.dirname(__FILE__) + "/../lib/vimdeck.rb"
