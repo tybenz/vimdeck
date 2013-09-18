@@ -25,11 +25,11 @@ module Vimdeck
 
   def self.create_slides(file)
     slides = File.read(file).split(@slide_delimiter)
-    new_slides = []
 
     @template = ERB.new(File.read(File.dirname(__FILE__) + "/templates/script.vim.erb"))
     @buffers = []
 
+    Dir.mkdir("presentation") unless File.exists?("presentation")
     slides.each_with_index do |slide, i|
       new_slide = ''
       headers = []
