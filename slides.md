@@ -1,18 +1,18 @@
-# Vimdown
+# VIMDOWN
 
 Presentations with nothing but vim
 
 
-# Tyler Benziger
+# VIM ROCKS!
 
-@tybenz // github.com/tybenz // tybenz.com
+![](img/vim.png)
 
 
 # Numbered List
 
-1. Are you getting it yet?
-2. Is any of this making sense?
-3. How about now?
+1. This is how a numbered list
+2. Looks in vimdown
+3. What do you think?
 
 
 # Bullets
@@ -23,6 +23,8 @@ Presentations with nothing but vim
 
 
 # Code
+
+Vimdown does syntax highlighting too!
 
 ```javascript
 var x = true;

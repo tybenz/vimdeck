@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 
 require 'artii'
+require 'asciiart'
 
 slant = Artii::Base.new :font => 'slant'
 smslant = Artii::Base.new :font => 'smslant'
@@ -16,36 +17,58 @@ script += "noremap <Right> :bn<CR>\n"
 
 slides.each_with_index do |slide, i|
   new_slide = ''
-  match = slide.match( /##\s*(.*)/ )
-  if !match
-    match = slide.match( /#\s*(.*)/ )
-    header = slant.asciify match[1] if match
-  else
-    header = smslant.asciify match[1]
-  end
-  rest = slide.match( /[^\n]*\n([\s\S\n]*)/m )
+  headers = []
 
-  code_height = 0
-  code_lang = ''
-  if rest
-    code = rest[1].match( /```([^\n]*)\n.*\n```/m )
-    if code
-      code_height = code[0].split("\n").length - 2
-      code_lang = code[1]
-      rest = rest[1].gsub( /\n```[^\n]*\n/, '' ).gsub( /\n```/, '' )
+  slide.each_line do |line|
+    match = line.match( /##\s*(.*)/ )
+    if match && match[1]
+      headers << smslant.asciify(match[1])
     else
-      rest = rest[1]
+      match = line.match( /#\s*(.*)/ )
+      if match && match[1]
+        headers << slant.asciify(match[1])
+      end
     end
   end
 
-  new_slide += header + "\n" if header
+  rest = slide.gsub( /#+\s*(.*)\n/, '' )
+  images = rest.scan( /\!\[\]\([^\(\)]*\)/ )
+  text = rest.split( /\!\[\]\([^\(\)]*\)/ )
+
+  if images.length > 0
+    rest = ''
+    images.each_with_index do |img,j|
+      rest += text[j] if text[j]
+
+      a = AsciiArt.new(img.match(/\(([^\(\)]*)\)/)[1])
+      rest += a.to_ascii_art width: 30
+    end
+  end
+
+  code_height = 0
+  code_lang = ''
+  code = nil
+  if rest
+    code = rest.match( /```([^\n]*)\n.*\n```/m )
+    if code
+      code_height = code[0].split("\n").length - 2
+      code_lang = code[1]
+      rest = rest.gsub( /```[^\n]*\n/, '' ).gsub( /\n```/, '' )
+      code = code[0].gsub( /```[^\n]*\n/, '' ).gsub( /\n```/, '' )
+    end
+  end
+
+  headers.each do |h|
+    new_slide += h + "\n"
+  end
   new_slide += rest if rest
-  new_slide += "\n" * 20
+  new_slide += "\n" * 80
 
 
   script += "b #{i+1}\n"
   if code_height > 0
-    start = new_slide.index(rest)
+    puts code
+    start = new_slide.index(code)
     start = new_slide[0..start].split("\n").length
     theend = code_height + start - 1
 
@@ -65,8 +88,8 @@ end
 
 script += "b 1\n"
 
-File.open("presentation/z.vim", "w") do |file|
+File.open("presentation/script.vim", "w") do |file|
   file.write script
 end
 
-exec 'vim presentation/*.md -S presentation/z.vim'
+exec 'vim presentation/*.md -S presentation/script.vim'
