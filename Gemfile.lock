@@ -1,0 +1,16 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    artii (2.0.3)
+    asciiart (0.0.5)
+      rainbow
+      rmagick
+    rainbow (1.1.4)
+    rmagick (2.13.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  artii
+  asciiart

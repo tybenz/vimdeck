@@ -11,7 +11,7 @@ slides = File.read('slides.md')
 
 slides = slides.split( "\n\n\n" )
 new_slides = []
-script = ERB.new(File.read("lib/templates/script.vim.erb"))
+script_template = ERB.new(File.read(File.dirname(__FILE__) + "/templates/script.vim.erb"))
 @buffers = []
 
 slides.each_with_index do |slide, i|
@@ -83,10 +83,10 @@ slides.each_with_index do |slide, i|
   @buffers << buffer
 end
 
-script_file = script.result(binding)
+script = script_template.result(binding)
 
 File.open("presentation/script.vim", "w") do |file|
-  file.write script_file
+  file.write script
 end
 
 exec 'vim presentation/*.md -S presentation/script.vim'
