@@ -1,8 +1,27 @@
 # vimdown
 
-Presentations done entirely in vim
+VIM as a presentation tool
 
-Write your slides in a markdown file
 
-Run `vimdown <file_name>` and it will generate a list of files in your presentation directory
-Open them in VIM and simply use your buffer commands to go between slides
+## Usage
+
+1. Write your slides in a markdown file
+
+2. Run `bin/vimdown` and it will generate a file for each slide and open them in VIM
+
+## VIM Script
+
+Vimdown will also provide a script file that will set up keybindings for you.
+
+PageUp/Left go backwards
+PageDown/Right go forward
+
+Screenshots:
+
+![](img/demo1.png)
+
+![](img/demo2.png)
+
+![](img/demo3.png)
+
+![](img/demo4.png)

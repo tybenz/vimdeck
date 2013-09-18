@@ -2,6 +2,7 @@
 
 require 'artii'
 require 'asciiart'
+require 'erb'
 
 slant = Artii::Base.new :font => 'slant'
 smslant = Artii::Base.new :font => 'smslant'
@@ -10,10 +11,8 @@ slides = File.read('slides.md')
 
 slides = slides.split( "\n\n\n" )
 new_slides = []
-script = "noremap <PageUp> :bp<CR>\n"
-script += "noremap <Left> :bp<CR>\n"
-script += "noremap <PageDown> :bn<CR>\n"
-script += "noremap <Right> :bn<CR>\n"
+script = ERB.new(File.read("lib/templates/script.vim.erb"))
+@buffers = []
 
 slides.each_with_index do |slide, i|
   new_slide = ''
@@ -45,16 +44,16 @@ slides.each_with_index do |slide, i|
     end
   end
 
+  buffer = {:num => i + 1}
   code_height = 0
-  code_lang = ''
   code = nil
   if rest
     code = rest.match( /```([^\n]*)\n.*\n```/m )
     if code
+      buffer[:code] = { :language => code[1] }
       code_height = code[0].split("\n").length - 2
-      code_lang = code[1]
-      rest = rest.gsub( /```[^\n]*\n/, '' ).gsub( /\n```/, '' )
       code = code[0].gsub( /```[^\n]*\n/, '' ).gsub( /\n```/, '' )
+      rest = rest.gsub( /```[^\n]*\n/, '' ).gsub( /\n```/, '' )
     end
   end
 
@@ -64,15 +63,11 @@ slides.each_with_index do |slide, i|
   new_slide += rest if rest
   new_slide += "\n" * 80
 
-
-  script += "b #{i+1}\n"
   if code_height > 0
-    puts code
     start = new_slide.index(code)
     start = new_slide[0..start].split("\n").length
-    theend = code_height + start - 1
-
-    script += "#{start},#{theend}SyntaxInclude #{code_lang}\n"
+    buffer[:code][:end] = code_height + start - 1
+    buffer[:code][:start] = start
   end
 
   spaces = "           "
@@ -84,12 +79,14 @@ slides.each_with_index do |slide, i|
   File.open("presentation/slide#{i}.md", "w") do |file|
     file.write new_slide
   end
+
+  @buffers << buffer
 end
 
-script += "b 1\n"
+script_file = script.result(binding)
 
 File.open("presentation/script.vim", "w") do |file|
-  file.write script
+  file.write script_file
 end
 
 exec 'vim presentation/*.md -S presentation/script.vim'

@@ -1,3 +1,4 @@
 presentation/*.md
 presentation/*.vim
 *.swp
+.DS_Store
