@@ -48,7 +48,7 @@ It uses a very small subset of markdown. List of items supported:
 - fenced code blocks
 
 That's it. The point of Markdown is that it's human-readable. Other stuff like (un)ordered
-lists, block quotes, etc will be displayed just as they were written.
+lists, block quotes, indented code blocks, etc. will be displayed just as they were written.
 
 Fenced code blocks look like this:
 
