@@ -45,9 +45,16 @@ It uses a very small subset of markdown. List of items supported:
 - h1s
 - h2s
 - images
+- fenced code blocks
 
 That's it. The point of Markdown is that it's human-readable. Other stuff like (un)ordered
 lists, block quotes, etc will be displayed just as they were written.
+
+Fenced code blocks look like this:
+
+    ```javascript
+       this.is = 'code'
+    ```
 
 
 ##Screenshots:
