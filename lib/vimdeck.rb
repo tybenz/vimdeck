@@ -68,16 +68,16 @@ module Vimdeck
         code_height = code[0].split("\n").length - 2
         code = code[0].gsub( /```[^\n]*\n/, '' ).gsub( /\n```/, '' )
         slide = slide.gsub( /```[^\n]*\n/, '' ).gsub( /\n```/, '' )
+
+        if code_height > 0
+          start = slide.index(code)
+          start = slide[0..start].split("\n").length
+          buffer[:code][:end] = code_height + start - 1
+          buffer[:code][:start] = start
+        end
       end
 
       slide += "\n" * 80
-
-      if code_height > 0
-        start = slide.index(code)
-        start = slide[0..start].split("\n").length
-        buffer[:code][:end] = code_height + start - 1
-        buffer[:code][:start] = start
-      end
 
       spaces = "           "
       slide = slide.gsub( /\n/, "\n#{spaces}" )

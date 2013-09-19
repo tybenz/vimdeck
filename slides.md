@@ -27,12 +27,24 @@
 Vimdeck does syntax highlighting too!
 
 ```ruby
-require 'erb'
+require "gem"
 
-template = ERB.new('template.erb')
+string = "vimdeck"
+array = Array.new
 
-# Compile template
-template.result(binding)
+# This is a comment
+class Person
+  
+  attr_accessor :name
+  
+  def initialize(attributes = {})
+    @name = attributes[:name]
+  end
+  
+  def self.greet
+    "hello"
+  end
+end
 ```
 
 
