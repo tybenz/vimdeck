@@ -5,6 +5,8 @@ VIM as a presentation tool
 
 ## Installation
 
+Install the vim plugin [SyntaxRange](https://github.com/vim-scripts/SyntaxRange).
+
 ```
 gem install vimdeck
 ```
