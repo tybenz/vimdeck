@@ -28,7 +28,7 @@ Vimdeck will also provide a script file that will set up keybindings for you.
 ## A Note about VIM
 
 This is a tool meant for VIM users. In other words, it is not a VIM plugin
-&emdash; it's a script that converts a plain text document into multiple files.
+&mdash; it's a script that converts a plain text document into multiple files.
 
 The only hard dependency is [SyntaxRange](https://github.com/vim-scripts/SyntaxRange).
 
