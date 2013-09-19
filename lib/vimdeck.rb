@@ -78,14 +78,26 @@ module Vimdeck
       end
 
       slide += "\n" * 80
+      slide += "slide #{i+1}"
 
       spaces = "           "
       slide = slide.gsub( /\n/, "\n#{spaces}" )
       slide = spaces + slide
       slide = slide.gsub( / *\n/, "\n" ).gsub( / *$/, '' )
 
+      regex = /\{\~(.*?)\~\}/m
+      match = slide.match(regex)
+      buffer[:comments] = []
+      while match && match[1] && match.post_match do
+        slide.sub!(regex, match[1])
+        pattern = match[1] + "||(||_.*slide #{i+1}||)||@="
+        buffer[:comments] << pattern.gsub(/\n/, "||n").gsub(/\[/, "||[").gsub(/\]/, "||]").gsub(/\|/, "\\").gsub(/\"/, "\\\"")
+        match = match.post_match.match(regex)
+      end
 
-      File.open("presentation/slide#{i}.md", "w") do |file|
+      filenum = "%03d" % (i+1)
+
+      File.open("presentation/slide#{filenum}.md", "w") do |file|
         file.write slide
       end
 

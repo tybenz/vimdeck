@@ -17,34 +17,155 @@
 
 # Bullets
 
-- First
-- Second
-- Third
+• First
+{~• Second
+• Third~}
 
 
-# Code
+# Bullets
 
-Vimdeck does syntax highlighting too!
+{~• First~}
+• Second
+{~• Third~}
+
+
+# Bullets
+
+{~• First
+• Second~}
+• Third
+
+
+#
 
 ```ruby
-require "gem"
+# VIMDECK DOES CODE!
 
-string = "vimdeck"
-array = Array.new
+module Parts
+  class foo
+    def slide
+     "of a"
+    end
 
-# This is a comment
-class Person
-  
-  attr_accessor :name
-  
-  def initialize(attributes = {})
-    @name = attributes[:name]
-  end
-  
-  def self.greet
-    "hello"
+    def can
+      highlight = "vimdeck"
+    end
   end
 end
+```
+
+
+#
+
+```ruby
+# VIMDECK DOES CODE!
+
+{~module Parts
+  class foo
+    def slide
+     "of a"
+    end
+
+    def can
+      highlight = ~}"vimdeck"{~
+    end
+  end
+end~}
+```
+
+
+#
+
+```ruby
+# VIMDECK DOES CODE!
+
+{~module Parts
+  class foo
+    def slide
+     "of a"
+    end
+
+    def~} can
+      {~highlight = "vimdeck"
+    end
+  end
+end~}
+```
+
+
+#
+
+```ruby
+# VIMDECK DOES CODE!
+
+{~module Parts
+  class foo
+    def slide
+     "of a"
+    end
+
+    def can~}
+      highlight {~= "vimdeck"
+    end
+  end
+end~}
+```
+
+
+#
+
+```ruby
+# VIMDECK DOES CODE!
+
+{~module~} Parts
+  {~class foo
+    def slide
+     "of a"
+    end
+
+    def can
+      highlight = "vimdeck"
+    end
+  end
+end~}
+```
+
+
+#
+
+```ruby
+# VIMDECK DOES CODE!
+
+{~module Parts
+  class foo
+    def slide~}
+     "of a"
+    {~end
+
+    def can
+      highlight = "vimdeck"
+    end
+  end
+end~}
+```
+
+
+#
+
+```ruby
+# VIMDECK DOES CODE!
+
+{~module Parts
+  class foo
+    def~} slide
+     {~"of a"
+    end
+
+    def can
+      highlight = "vimdeck"
+    end
+  end
+end~}
 ```
 
 
