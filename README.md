@@ -56,6 +56,12 @@ Fenced code blocks look like this:
        this.is = 'code'
     ```
 
+# Why Ruby?
+
+Additionally, I want to point out that I realize that it's odd to have a VIM-based tool
+and not write it as a VIM script. Ruby was my language of choice only because the ascii art dependencies
+were implemented as ruby gems. Plus, I &hearts; ruby.
+
 
 ##Screenshots:
 
