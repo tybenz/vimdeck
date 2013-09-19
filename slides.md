@@ -36,11 +36,9 @@
 • Third
 
 
-#
+## CODE
 
 ```ruby
-# VIMDECK DOES CODE!
-
 module Parts
   class foo
     def slide
@@ -55,11 +53,9 @@ end
 ```
 
 
-#
+## CODE
 
 ```ruby
-# VIMDECK DOES CODE!
-
 {~module Parts
   class foo
     def slide
@@ -74,11 +70,9 @@ end~}
 ```
 
 
-#
+## CODE
 
 ```ruby
-# VIMDECK DOES CODE!
-
 {~module Parts
   class foo
     def slide
@@ -93,11 +87,9 @@ end~}
 ```
 
 
-#
+## CODE
 
 ```ruby
-# VIMDECK DOES CODE!
-
 {~module Parts
   class foo
     def slide
@@ -112,11 +104,9 @@ end~}
 ```
 
 
-#
+## CODE
 
 ```ruby
-# VIMDECK DOES CODE!
-
 {~module~} Parts
   {~class foo
     def slide
@@ -131,11 +121,9 @@ end~}
 ```
 
 
-#
+## CODE
 
 ```ruby
-# VIMDECK DOES CODE!
-
 {~module Parts
   class foo
     def slide~}
@@ -150,11 +138,9 @@ end~}
 ```
 
 
-#
+## CODE
 
 ```ruby
-# VIMDECK DOES CODE!
-
 {~module Parts
   class foo
     def~} slide
