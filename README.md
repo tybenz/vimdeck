@@ -73,7 +73,22 @@ Fenced code blocks look like this:
        this.is = 'code'
     ```
 
-# Why Ruby?
+## Highlighting Syntax
+
+Vimdeck also supports "highlighting" parts of a slide. This is an experimental feature and needs more testing.
+
+Use `{~ unimportant_text_here ~}` to "unhighlight" portions of a slide:
+
+    # Slide Title
+
+    {~- Unimportant bullet~}
+    - Important bullet
+    {~- Really unimportant bullet~}
+
+This allows you to create multiple versions of the same slide but with different parts highlighted.
+Which is something I like to use often when presenting code snippets.
+
+## Why Ruby?
 
 Additionally, I want to point out that I realize that it's odd to have a VIM-based tool
 and not write it as a VIM script. Ruby was my language of choice only because the ascii art dependencies
