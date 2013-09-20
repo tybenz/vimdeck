@@ -14,7 +14,7 @@ gem install vimdeck
 
 ## Usage
 
-1. Write your slides in a markdown file
+1. Write your slides in a markdown file (See below for details on _limited_ markdown syntax)
 
 2. Run `vimdeck <file_name.md>` and it will generate a file for each slide and open them in VIM
 
@@ -38,6 +38,23 @@ Other than that you may need some syntax highlighting plugins to handle the code
 
 
 ## A Note About Markdown
+
+Slides are separated by 2 newlines in a row.
+
+Example:
+
+```
+# Slide 1
+
+- has some
+- really important
+- information
+
+
+# Slide 2
+
+Is less important
+```
 
 Vimdeck does not compile markdown into something else.
 It uses a very small subset of markdown. List of items supported:
