@@ -63,15 +63,15 @@
             <div class="nav-selection projects"></div>
         </div>
         <div class="subnav-slider">
-            <div class="subnav-selection home"></div>
+            <div class="subnav-selection docs"></div>
         </div>
         <nav class="subnav">
             <ul>
                 
-                    <li><a href="/" class="active">Home</a></li>
+                    <li><a href="/">Home</a></li>
                 
                 
-                    <li><a href="/docs">Docs</a></li>
+                    <li><a href="/docs" class="active">Docs</a></li>
                 
             </ul>
         </nav>
@@ -82,21 +82,70 @@
     <section id="main">
         <article class="container">
           <h1 class="hero">Vimdeck</h1>
-          <p>VIM as a presentation tool</p>
+          <h4 id="installation">Installation</h4>
 
-<h2 id="screenshots">Screenshots:</h2>
+<p>Install the vim plugin <a href="https://github.com/vim-scripts/SyntaxRange">SyntaxRange</a>.</p>
 
-<p>Vimdeck converts h1s and h2s into ascii art
-<img src="img/demo1.png" alt="" /></p>
+<p><code>
+gem install vimdeck
+</code></p>
 
-<p>Lists are displayed as they are written
-<img src="img/demo2.png" alt="" /></p>
+<h4 id="usage">Usage</h4>
 
-<p>Vimdeck will also augment its vimscript to provide syntax highlighting
-<img src="img/demo3.png" alt="" /></p>
+<ol>
+  <li>
+    <p>Write your slides in a markdown file</p>
+  </li>
+  <li>
+    <p>Run <code>vimdeck &lt;file_name.md&gt;</code> and it will generate a file for each slide and open them in VIM</p>
+  </li>
+</ol>
 
-<p>Images are even converted to ascii art!
-<img src="img/demo4.png" alt="" /></p>
+<h4 id="vim-script">VIM Script</h4>
+
+<p>Vimdeck will also provide a script file that will set up keybindings for you.</p>
+
+<ul>
+  <li>PageUp/Left go backwards</li>
+  <li>PageDown/Right go forward</li>
+</ul>
+
+<h4 id="a-note-about-vim">A Note about VIM</h4>
+
+<p>This is a tool meant for VIM users. In other words, it is not a VIM plugin
+— it’s a script that converts a plain text document into multiple files.</p>
+
+<p>The only hard dependency is <a href="https://github.com/vim-scripts/SyntaxRange">SyntaxRange</a>.</p>
+
+<p>Other than that you may need some syntax highlighting plugins to handle the code syntax highlighting.</p>
+
+<h4 id="a-note-about-markdown">A Note About Markdown</h4>
+
+<p>Vimdeck does not compile markdown into something else.
+It uses a very small subset of markdown. List of items supported:</p>
+
+<ul>
+  <li>h1s</li>
+  <li>h2s</li>
+  <li>images</li>
+  <li>fenced code blocks</li>
+</ul>
+
+<p>That’s it. The point of Markdown is that it’s human-readable. Other stuff like (un)ordered
+lists, block quotes, indented code blocks, etc. will be displayed just as they were written.</p>
+
+<p>Fenced code blocks look like this:</p>
+
+<pre><code>```javascript
+   this.is = 'code'
+```
+</code></pre>
+
+<h4 id="why-ruby">Why Ruby?</h4>
+
+<p>Additionally, I want to point out that I realize that it’s odd to have a VIM-based tool
+and not write it as a VIM script. Ruby was my language of choice only because the ascii art dependencies
+were implemented as ruby gems. Plus, I ♥ ruby.</p>
 
         </article>
     </section>

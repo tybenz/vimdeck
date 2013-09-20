@@ -1,0 +1,31 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+h1.hero {
+  font-size: 6.5em;
+  margin: 0.3em 0 0.1em; }
+
+.project {
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 48.82117%; }
+  .project:last-child {
+    margin-right: 0; }
+
+.pagination a {
+  display: block;
+  float: left;
+  margin-right: 2.35765%;
+  width: 23.23176%; }
+  .pagination a:last-child {
+    margin-right: 0; }
+
+.project h2 {
+  font-size: 3.5em; }
+
+@media (min-width: 62.5em) {
+  .github {
+    display: block; } }
