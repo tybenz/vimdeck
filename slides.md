@@ -8,28 +8,28 @@
 ![](img/vim.png)
 
 
-## Numbered List
+## NUMBERED LIST
 
 1. This is how a numbered list
 2. Looks in vimdeck
 3. What do you think?
 
 
-# Bullets
+# BULLETS
 
 • First
 {~• Second
 • Third~}
 
 
-# Bullets
+# BULLETS
 
 {~• First~}
 • Second
 {~• Third~}
 
 
-# Bullets
+# BULLETS
 
 {~• First
 • Second~}
