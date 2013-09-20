@@ -1,0 +1,46 @@
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-33073396-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+<script type="text/javascript" charset="utf-8">
+    document.onreadystatechange = function() {
+        if ( document.readyState == 'complete' ) {
+            var active = document.querySelector( 'header nav.main a.active' ).innerHTML.toLowerCase(),
+                links = document.querySelectorAll( 'header nav.main li a'),
+                selection = document.querySelector( 'header .nav-selection' ),
+                subactive = document.querySelector( 'header nav.subnav a.active' ).innerHTML.toLowerCase(),
+                sublinks = document.querySelectorAll( 'header nav.subnav li a'),
+                subselection = document.querySelector( 'header .subnav-selection' ),
+                i, j, link;
+            for ( i = 0; i < links.length; i++ ) {
+                link = links[ i ];
+                link.addEventListener( 'mouseover', function() {
+                    selection.className = 'nav-selection';
+                    selection.className = 'nav-selection ' + this.innerHTML.toLowerCase();
+                });
+                link.addEventListener( 'mouseout', function() {
+                    selection.className = 'nav-selection ' + active;
+                });
+            }
+            for ( i = 0; i < sublinks.length; i++ ) {
+                link = sublinks[ i ];
+                link.addEventListener( 'mouseover', function() {
+                    subselection.className = 'subnav-selection';
+                    subselection.className = 'subnav-selection ' + this.innerHTML.toLowerCase();
+                });
+                link.addEventListener( 'mouseout', function() {
+                    subselection.className = 'subnav-selection ' + subactive;
+                });
+            }
+        }
+    };
+</script>

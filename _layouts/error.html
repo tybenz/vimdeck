@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>{{ page.title }} | Tyler Benziger</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <link rel="shortcut icon" href="{% include avatar_url %}?s=16">
+  <link rel="stylesheet" href="/css/reset.css">
+  <link rel="stylesheet" href="/css/mobile.css">
+  <link rel="stylesheet" href="/css/desktop.css" media="(min-width:40em)">
+  <link rel="stylesheet" href="/css/pygments.css">
+  <link rel="stylesheet" href="/css/font.css">
+  <script type="text/javascript" charset="utf-8" src="/js/matchmedia.js"></script>
+  <script type="text/javascript" charset="utf-8" src="/js/picturefill.js"></script>
+</head>
+
+<body>
+<div class="wrapper">
+    {% include header2.html %}
+
+    <section id="main">
+        <article class="container">
+          <h1 class="hero">{{page.title}}</h1>
+          {{ content }}
+        </article>
+    </section>
+
+    {% include footer.html %}
+</body>
+{% include scripts.html %}
+</html>

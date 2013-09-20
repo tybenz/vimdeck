@@ -1,0 +1,46 @@
+<header>
+    <div class="container">
+        <div class="profile">
+            <div class="social">
+                <a href="http://twitter.com/tybenz">
+                    <div data-picture data-alt="Twitter">
+                        <div data-src="/img/twitter16.png"></div>
+                        <div data-src="/img/twitter32.png"     data-media="(-webkit-min-device-pixel-ratio: 2)"></div>
+                        <noscript><img src="/img/twitter16.png" alt="Twitter"></noscript>
+                    </div>
+                </a>
+                <a href="http://github.com/tybenz">
+                    <div data-picture data-alt="Github">
+                        <div data-src="/img/octocat16.png"></div>
+                        <div data-src="/img/octocat32.png"     data-media="(-webkit-min-device-pixel-ratio: 2)"></div>
+                        <noscript><img src="/img/octocat16.png" alt="Github"></noscript>
+                    </div>
+                </a>
+            </div>
+            <img src="{% include avatar_url %}?s=54" alt="avatar" class="avatar" />
+        </div>
+        <h5 class="logo"><a href="http://tybenz.com">Tyler Benziger</a></h5>
+        <nav class="main">
+            <ul>
+                {% if page.nav == "blog" %}
+                    <li><a href="http://tybenz.com" class="active">Blog</a></li>
+                {% else %}
+                    <li><a href="http://tybenz.com">Blog</a></li>
+                {% endif %}
+                {% if page.nav == "about" %}
+                <li><a href="http://tybenz.com/about" class="active">About</a></li>
+                {% else %}
+                <li><a href="http://tybenz.com/about">About</a></li>
+                {% endif %}
+                {% if page.nav == "projects" %}
+                <li><a href="http://tybenz.com/projects" class="active">Projects</a></li>
+                {% else %}
+                <li><a href="http://tybenz.com/projects">Projects</a></li>
+                {% endif %}
+            </ul>
+        </nav>
+        <div class="nav-slider">
+            <div class="nav-selection {{ page.nav }}"></div>
+        </div>
+    </div>
+</header>

@@ -1,0 +1,74 @@
+// Font-face mixin
+@mixin font-face($name, $path, $weight: normal, $style: normal){
+
+  @font-face {
+    font-family: $name;
+    src: url('#{$path}.eot');
+    src: url('#{$path}.eot?#iefix') format('embedded-opentype'),
+    url('#{$path}.woff') format('woff'),
+    url('#{$path}.ttf') format('truetype'),
+    url('#{$path}.svg#BariolRegularRegular') format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+
+}
+
+// Keyframes mixin
+@mixin keyframes($animation-name) {
+  @-webkit-keyframes $animation-name {
+    @content;
+  }
+
+  @-moz-keyframes $animation-name {
+    @content;
+  }
+
+  @-ms-keyframes $animation-name {
+    @content;
+  }
+
+  @-o-keyframes $animation-name {
+    @content;
+  }
+
+  @keyframes $animation-name {
+    @content;
+  }
+}
+
+// IE7 hack
+@mixin ie7 {
+  * + html & {
+    @content;
+  }
+}
+
+// IE styles using Paul Irish's conditional comments
+@mixin ie7 {
+  html.ie7 & {
+    @content;
+  }
+}
+
+@mixin ie8 {
+  html.ie8 & {
+    @content;
+  }
+}
+
+@mixin ie9 {
+  html.ie9 & {
+    @content;
+  }
+}
+
+// Retina (based on https://gist.github.com/3446599)
+@mixin retina {
+  @media only screen and (-Webkit-min-device-pixel-ratio: 1.3),
+  only screen and (-moz-min-device-pixel-ratio: 1.3),
+  only screen and (-o-min-device-pixel-ratio: 13/10),
+  only screen and (min-resolution: 1.3dppx) {
+    @content;
+  }
+}
