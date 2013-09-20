@@ -112,3 +112,10 @@ Vimdeck will also augment its vimscript to provide syntax highlighting
 
 Images are even converted to ascii art!
 ![](img/demo4.png)
+
+
+
+
+---------------------
+
+Made by [tybenz](http://github.com/tybenz) tybenz.com [@tybenz](twitter.com/tybenz)
