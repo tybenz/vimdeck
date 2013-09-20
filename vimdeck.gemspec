@@ -20,4 +20,6 @@ Gem::Specification.new do |s|
   s.files        = FileList['**/**/*'].exclude /.git|.svn|.DS_Store/
   s.bindir       = 'bin'
   s.executables  = ['vimdeck']
+  s.add_runtime_dependency 'artii'
+  s.add_runtime_dependency 'asciiart'
 end
