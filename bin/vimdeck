@@ -2,4 +2,4 @@
 
 require 'vimdeck'
 
-Vimdeck.slideshow(ARGV[0])
+Vimdeck::Slideshow.start(ARGV[0])
