@@ -6,6 +6,7 @@ GEM
       rainbow
       rmagick
     rainbow (1.1.4)
+    redcarpet (2.2.2)
     rmagick (2.13.2)
 
 PLATFORMS
@@ -14,3 +15,4 @@ PLATFORMS
 DEPENDENCIES
   artii
   asciiart
+  redcarpet
