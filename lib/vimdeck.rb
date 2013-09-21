@@ -6,21 +6,28 @@ require 'erb'
 require 'redcarpet'
 
 module Vimdeck
-  def self.artii(text, type)
-    if type == "large"
-      font = Artii::Base.new :font => 'slant'
-    else
-      font = Artii::Base.new :font => 'smslant'
+  # Helper methods for ascii art conversion
+  class Ascii
+    def self.header(text, type)
+      if type == "large"
+        font = Artii::Base.new :font => 'slant'
+      else
+        font = Artii::Base.new :font => 'smslant'
+      end
+
+      font.asciify(text)
     end
 
-    font.asciify(text)
+    def self.image(img)
+      a = AsciiArt.new(img)
+      a.to_ascii_art width: 30
+    end
   end
 
-  def self.ascii_art(img)
-    a = AsciiArt.new(img)
-    a.to_ascii_art width: 30
-  end
-
+  # Custom Redcarpet renderer handles headers and images
+  # Code blocks are ignored by the renderer because they have to be
+  # measured for the vimscript, so parsing of the fenced code blocks
+  # happens in the slideshow generator itself
   class Render < Redcarpet::Render::Base
     # Methods where the first argument is the text content
     [
@@ -48,10 +55,10 @@ module Vimdeck
     def header(title, level)
       case level
       when 1
-        Vimdeck::artii(title, "large") + "\n"
+        Vimdeck::Ascii.header(title, "large") + "\n"
 
       when 2
-        Vimdeck::artii(title, "small") + "\n"
+        Vimdeck::Ascii.header(title, "small") + "\n"
       end
     end
 
@@ -68,7 +75,7 @@ module Vimdeck
     end
 
     def image(image, title, alt_text)
-      Vimdeck::ascii_art(image)
+      Vimdeck::Ascii.image(image)
     end
   end
 
@@ -85,17 +92,21 @@ module Vimdeck
     def self.generate(filename)
       slides = File.read(filename)
 
-      slides = slides.split("\n\n\n")
       renderer = Redcarpet::Markdown.new(Vimdeck::Render, :fenced_code_blocks => true)
+      Dir.mkdir("presentation") unless File.exists?("presentation")
       @buffers = []
 
-      Dir.mkdir("presentation") unless File.exists?("presentation")
-
+      # Slide separator is 3 newlines
+      slides = slides.split("\n\n\n")
       i = 0
       slides.each do |slide|
+        # Pad file names with zeros. e.g. slide001.md, slide023.md, etc.
         slide_num = "%03d" % (i+1)
         slide = renderer.render(slide)
 
+        # buffer gets stashed into @buffers array for script template
+        # needs to track things like the buffer number, code highlighting
+        # and focus/unfocus stuff
         buffer = {:num => i + 1}
         code_height = 0
         code = nil
@@ -114,8 +125,14 @@ module Vimdeck
           end
         end
 
+        # Prepending each line with slide_padding
+        # Removing trailing spaces
+        # Add newlines at end of the file to hide the slide identifier
         slide = slide_padding + slide.gsub( /\n/, "\n#{slide_padding}" ).gsub( / *$/, "" ) + ("\n" * 80) + "slide #{i+1}"
 
+        # Buffers comments refers to items that need to be less focused/"unhighlighted"
+        # We add a regex to the vimscript for each slide with "comments"
+        # We use the hidden slide identifier to differentiate between slides
         regex = /\{\~(.*?)\~\}/m
         match = slide.match(regex)
         buffer[:comments] = []
@@ -125,7 +142,6 @@ module Vimdeck
           buffer[:comments] << pattern.gsub(/\n/, "||n").gsub(/\[/, "||[").gsub(/\]/, "||]").gsub(/\|/, "\\").gsub(/\"/, "\\\"")
           match = match.post_match.match(regex)
         end
-
 
         File.open("presentation/slide#{slide_num}.md", "w") do |file|
           file.write slide
