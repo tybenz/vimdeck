@@ -1,5 +1,23 @@
 #!/usr/bin/env ruby
+# Usage: vimdeck [<file>]
 
 require 'vimdeck'
+
+def usage
+  File.read(__FILE__).split("\n").grep(/^# /).each do |line|
+    puts line[2..-1]
+  end
+end
+
+if ARGV.include?('--help') || ARGV.include?('-h')
+  usage
+  exit 0
+end
+
+if !File.exists?(ARGV[0])
+  usage
+  puts "\nFile does not exist: #{ARGV[0]}"
+  exit 0
+end
 
 Vimdeck::Slideshow.start(ARGV[0])
