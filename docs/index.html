@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
-  <title>Vimdeck | Tyler Benziger</title>
+  <title>Vimdeck - Docs | Tyler Benziger</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
 
   <link rel="shortcut icon" href="http://gravatar.com/avatar/9f5734a7063a4c48139f4999f3100167
@@ -81,20 +81,21 @@
 
     <section id="main">
         <article class="container">
-          <h1 class="hero">Vimdeck</h1>
+          <h1 class="hero">Vimdeck - Docs</h1>
           <h4 id="installation">Installation</h4>
 
-<p>Install the vim plugin <a href="https://github.com/vim-scripts/SyntaxRange">SyntaxRange</a>.</p>
+<p>Install a markdown syntax highlighting plugin for VIM. (I recommend <a href="http://github.com/tpope/vim-markdown">tpope/vim-markdown</a>)</p>
 
-<p><code>
-gem install vimdeck
-</code></p>
+<p>Install the VIM plugin <a href="https://github.com/vim-scripts/SyntaxRange">SyntaxRange</a>.</p>
+
+<div class="highlight"><pre><code class="bash">gem install vimdeck
+</code></pre></div>
 
 <h4 id="usage">Usage</h4>
 
 <ol>
   <li>
-    <p>Write your slides in a markdown file</p>
+    <p>Write your slides in a markdown file (See below for details on <em>limited</em> markdown syntax)</p>
   </li>
   <li>
     <p>Run <code>vimdeck &lt;file_name.md&gt;</code> and it will generate a file for each slide and open them in VIM</p>
@@ -108,6 +109,7 @@ gem install vimdeck
 <ul>
   <li>PageUp/Left go backwards</li>
   <li>PageDown/Right go forward</li>
+  <li>Q closes presentation</li>
 </ul>
 
 <h4 id="a-note-about-vim">A Note about VIM</h4>
@@ -121,8 +123,26 @@ gem install vimdeck
 
 <h4 id="a-note-about-markdown">A Note About Markdown</h4>
 
-<p>Vimdeck does not compile markdown into something else.
-It uses a very small subset of markdown. List of items supported:</p>
+<p>Slides are separated by 2 newlines in a row.</p>
+
+<p>Example:</p>
+
+<div class="highlight"><pre><code class="text"># Slide 1
+
+- has some
+- really important
+- information
+
+
+# Slide 2
+
+Is less important
+</code></pre></div>
+
+<p>Vimdeck uses redcarpet to parse its markdown and implements a custom renderer
+for things like ascii art. It uses a very small subset of markdown.</p>
+
+<p>List of items supported:</p>
 
 <ul>
   <li>h1s</li>
@@ -136,10 +156,26 @@ lists, block quotes, indented code blocks, etc. will be displayed just as they w
 
 <p>Fenced code blocks look like this:</p>
 
-<pre><code>```javascript
-   this.is = 'code'
+<div class="highlight"><pre><code class="text">```javascript
+   this.is = &#39;code&#39;
 ```
-</code></pre>
+</code></pre></div>
+
+<h4 id="highlighting-syntax">Highlighting Syntax</h4>
+
+<p>Vimdeck also supports “highlighting” parts of a slide. This is an experimental feature and needs more testing.</p>
+
+<p>Use <code>{~ unimportant_text_here ~}</code> to “unhighlight” portions of a slide:</p>
+
+<div class="highlight"><pre><code class="text"># Slide Title
+
+{~- Unimportant bullet~}
+- Important bullet
+{~- Really unimportant bullet~}
+</code></pre></div>
+
+<p>This allows you to create multiple versions of the same slide but with different parts highlighted.
+Which is something I like to use often when presenting code snippets.</p>
 
 <h4 id="why-ruby">Why Ruby?</h4>
 
