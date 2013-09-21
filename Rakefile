@@ -3,30 +3,31 @@ require "rake"
 
 VERSION = File.read(File.join(".", "VERSION"))
 
-def build
-  exec "gem build vimdeck.gemspec"
-end
-
-def deploy
-  exec "gem push vimdeck-#{VERSION.gsub( /\n/, "" )}.gem"
-end
-
-def tag
-  exec "git tag v#{VERSION}"
-end
-
 desc "Build gem from gemspec"
-task :build do; build end
+task :build do
+  system "gem build vimdeck.gemspec"
+end
 
 desc "Deploy gem to rubygems.org"
-task :deploy do; deploy end
+task :deploy do
+  system "gem push vimdeck-#{VERSION.gsub( /\n/, "" )}.gem"
+end
 
 desc "Tag git repo with release"
-task :tag do; tag end
+task :tag do
+  system "git tag v#{VERSION}"
+  puts "Tag v#{VERSION} created"
+end
+
+desc "Push tags to github"
+task :push_tags do
+  system "git push --tags origin master"
+end
 
 desc "Release new version: build, deploy, and tag"
 task :release do
-  build
-  deploy
-  tag
+  ["build", "deploy", "tag", "push_tags"].each do |t|
+    Rake::Task[t].reenable
+    Rake::Task[t].invoke
+  end
 end
