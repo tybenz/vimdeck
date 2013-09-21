@@ -25,6 +25,7 @@ Vimdeck will also provide a script file that will set up keybindings for you.
 
 - PageUp/Left go backwards
 - PageDown/Right go forward
+- Q closes presentation
 
 
 ## A Note about VIM
