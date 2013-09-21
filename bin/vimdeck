@@ -14,9 +14,9 @@ if ARGV.include?('--help') || ARGV.include?('-h')
   exit 0
 end
 
-if !File.exists?(ARGV[0])
+if !ARGV[0] || !File.exists?(ARGV[0])
   usage
-  puts "\nFile does not exist: #{ARGV[0]}"
+  puts "\nFile does not exist! #{ARGV[0]}"
   exit 0
 end
 
