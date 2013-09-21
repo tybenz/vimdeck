@@ -13,7 +13,9 @@ can fork and pull-request your buns off.
 
 ## Installation
 
-Install the vim plugin [SyntaxRange](https://github.com/vim-scripts/SyntaxRange).
+Install a markdown syntax highlighting plugin for VIM. (I recommend [tpope/vim-markdown](http://github.com/tpope/vim-markdown))
+
+Install the VIM plugin [SyntaxRange](https://github.com/vim-scripts/SyntaxRange).
 
 ```
 gem install vimdeck
