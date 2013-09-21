@@ -118,4 +118,4 @@ Images are even converted to ascii art!
 
 ---------------------
 
-Made by [tybenz](http://github.com/tybenz): [tybenz.com](http://tybenz.com) // [@tybenz](twitter.com/tybenz)
+Made by [tybenz](http://github.com/tybenz): [tybenz.com](http://tybenz.com) // [@tybenz](http://twitter.com/tybenz)
