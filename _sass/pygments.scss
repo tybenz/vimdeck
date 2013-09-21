@@ -1,6 +1,7 @@
 .highlight { overflow-x: auto;background: #ffffff; color: black; padding: 20px;border: 1px solid #ccc;}
 .highlight pre  { white-space: pre;  font-size: 0.8em;line-height: 1.2em;  color: #333; }
-.highlight pre code {font-family: 'Source Code Pro', monospace;}
+.highlight pre code, code {font-family: 'Source Code Pro', monospace;}
+p code { font-size: 0.8em; border: 1px solid #ccc; background: #fff; padding: 5px; margin: 0 5px; }
 .highlight .c { color: #999988; font-style: italic; }
 .highlight .err { background-color: #e3d2d2; color: #a61717; }
 .highlight .k { font-weight: bold; }

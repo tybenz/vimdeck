@@ -1,3 +1,5 @@
 _site/
 css/
 .sass-cache/
+*.gem
+presentation/

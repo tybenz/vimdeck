@@ -1,5 +1,5 @@
 ---
-title: Vimdeck
+title: Vimdeck - Docs
 nav: projects
 subnav: docs
 layout: default
@@ -7,16 +7,18 @@ layout: default
 
 #### Installation
 
-Install the vim plugin [SyntaxRange](https://github.com/vim-scripts/SyntaxRange).
+Install a markdown syntax highlighting plugin for VIM. (I recommend [tpope/vim-markdown](http://github.com/tpope/vim-markdown))
 
-```
+Install the VIM plugin [SyntaxRange](https://github.com/vim-scripts/SyntaxRange).
+
+{% highlight bash %}
 gem install vimdeck
-```
+{% endhighlight %}
 
 
 #### Usage
 
-1. Write your slides in a markdown file
+1. Write your slides in a markdown file (See below for details on _limited_ markdown syntax)
 
 2. Run `vimdeck <file_name.md>` and it will generate a file for each slide and open them in VIM
 
@@ -27,6 +29,7 @@ Vimdeck will also provide a script file that will set up keybindings for you.
 
 - PageUp/Left go backwards
 - PageDown/Right go forward
+- Q closes presentation
 
 
 #### A Note about VIM
@@ -41,8 +44,27 @@ Other than that you may need some syntax highlighting plugins to handle the code
 
 #### A Note About Markdown
 
-Vimdeck does not compile markdown into something else.
-It uses a very small subset of markdown. List of items supported:
+Slides are separated by 2 newlines in a row.
+
+Example:
+
+{% highlight text %}
+# Slide 1
+
+- has some
+- really important
+- information
+
+
+# Slide 2
+
+Is less important
+{% endhighlight %}
+
+Vimdeck uses redcarpet to parse its markdown and implements a custom renderer
+for things like ascii art. It uses a very small subset of markdown.
+
+List of items supported:
 
 - h1s
 - h2s
@@ -54,9 +76,29 @@ lists, block quotes, indented code blocks, etc. will be displayed just as they w
 
 Fenced code blocks look like this:
 
-    ```javascript
-       this.is = 'code'
-    ```
+{% highlight text %}
+```javascript
+   this.is = 'code'
+```
+{% endhighlight %}
+
+
+#### Highlighting Syntax
+
+Vimdeck also supports "highlighting" parts of a slide. This is an experimental feature and needs more testing.
+
+Use `{~ unimportant_text_here ~}` to "unhighlight" portions of a slide:
+
+{% highlight text %}
+# Slide Title
+
+{~- Unimportant bullet~}
+- Important bullet
+{~- Really unimportant bullet~}
+{% endhighlight %}
+
+This allows you to create multiple versions of the same slide but with different parts highlighted.
+Which is something I like to use often when presenting code snippets.
 
 #### Why Ruby?
 
