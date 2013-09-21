@@ -1,6 +1,14 @@
-# vimdeck
+# Vimdeck
 
 VIM as a presentation tool
+
+
+## News
+
+Vimdeck now uses [redcarpet](http://github.com/vmg/redcarpet) to parse and render markdown!
+
+I've cleaned up the code significantly. So those of you who like more features in Vimdeck
+can fork and pull-request your buns off.
 
 
 ## Installation
@@ -57,8 +65,8 @@ Example:
 Is less important
 ```
 
-Vimdeck does not compile markdown into something else.
-It uses a very small subset of markdown. List of items supported:
+Vimdeck uses redcarpet to parse its markdown and implements a custom renderer
+for things like ascii art. It uses a very small subset of markdown. List of items supported:
 
 - h1s
 - h2s
