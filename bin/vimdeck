@@ -1,23 +1,68 @@
 #!/usr/bin/env ruby
-# Usage: vimdeck [<file>]
+#> Usage: vimdeck [<command>] [<file>]
+#>
+#> Commands:
+#>
+#>   slideshow:     generate and show slides (default)
+#>   generate:      generate slides only
+#>   open:          open slides in presentation folder (no file needed)
 
-require 'vimdeck'
+require "vimdeck"
 
 def usage
-  File.read(__FILE__).split("\n").grep(/^# /).each do |line|
-    puts line[2..-1]
+  File.read(__FILE__).split("\n").grep(/^#>/).each do |line|
+    puts line[3..-1]
   end
 end
 
-if ARGV.include?('--help') || ARGV.include?('-h')
+def check_file(file)
+  if !File.exists?(file)
+    usage
+    puts "\nFile does not exist! #{file}"
+    exit 0
+  end
+end
+
+if ARGV.include?("--help") || ARGV.include?("-h")
   usage
   exit 0
 end
 
-if !ARGV[0] || !File.exists?(ARGV[0])
+if ARGV.length == 0
   usage
-  puts "\nFile does not exist! #{ARGV[0]}"
   exit 0
-end
+elsif ARGV.length == 1
+  if ARGV[0] == "open"
+    Vimdeck::Slideshow.open
+  else
+    file = ARGV[0]
+    check_file file
 
-Vimdeck::Slideshow.start(ARGV[0])
+    Vimdeck::Slideshow.start(ARGV[0])
+  end
+elsif ARGV.length == 2
+  command = ARGV[0]
+  file = ARGV[1]
+
+  if command != "slideshow" && command != "generate" && command != "open"
+    usage
+    exit 0
+  end
+
+  if command == "open"
+    puts "Vimdeck will open already existing slides"
+    puts "File name will be ignored"
+    sleep 3
+  else
+    check_file file
+  end
+
+  case command
+  when "slideshow"
+    Vimdeck::Slideshow.start(file)
+  when "generate"
+    Vimdeck::Slideshow.generate(file)
+  else # open
+    Vimdeck::Slideshow.open()
+  end
+end
