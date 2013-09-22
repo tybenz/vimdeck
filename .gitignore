@@ -3,3 +3,5 @@ presentation/*.vim
 *.swp
 .DS_Store
 *.gem
+.sass-cache/
+_site/
