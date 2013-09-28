@@ -17,16 +17,16 @@
 
 # BULLETS
 
-• First
-{~• Second
+• First{~
+• Second
 • Third~}
 
 
 # BULLETS
 
 {~• First~}
-• Second
-{~• Third~}
+• Second{~
+• Third~}
 
 
 # BULLETS

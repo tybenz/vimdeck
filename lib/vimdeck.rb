@@ -33,7 +33,7 @@ module Vimdeck
     [
       # block-level calls
       :block_quote,
-      :block_html, :list, :list_item,
+      :block_html, :list_item,
 
       # span-level calls
       :autolink, :codespan, :double_emphasis,
@@ -49,6 +49,14 @@ module Vimdeck
     ].each do |method|
       define_method method do |*args|
         args.first
+      end
+    end
+
+    def list(content, type)
+      if type == :unordered
+        "<!~#{content}~!>"
+      else
+        "<@~#{content}~@>"
       end
     end
 
@@ -103,6 +111,30 @@ module Vimdeck
         # Pad file names with zeros. e.g. slide001.md, slide023.md, etc.
         slide_num = "%03d" % (i+1)
         slide = renderer.render(slide)
+
+        regex = /\<\@\~(.*)\~\@\>/m
+        match = slide.match(regex)
+        while match && match[1] && match.post_match do
+          list = match[1].split("\n")
+          j = 0
+          list = list.map do |li|
+            j += 1
+            "#{j}. #{li}"
+          end
+          slide.sub!(regex, list.join("\n"))
+          match = match.post_match.match(regex)
+        end
+
+        regex = /\<\!\~(.*)\~\!\>/m
+        match = slide.match(regex)
+        while match && match[1] && match.post_match do
+          list = match[1].split("\n")
+          list = list.map do |li|
+            "\u2022 #{li}"
+          end
+          slide.sub!(regex, list.join("\n"))
+          match = match.post_match.match(regex)
+        end
 
         # buffer gets stashed into @buffers array for script template
         # needs to track things like the buffer number, code highlighting
