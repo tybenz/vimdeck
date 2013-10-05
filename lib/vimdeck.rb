@@ -75,7 +75,7 @@ module Vimdeck
     end
 
     def paragraph(text)
-      text + "\n"
+      text + "\n\n"
     end
 
     def block_code(code, language)

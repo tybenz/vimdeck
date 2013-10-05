@@ -8,6 +8,13 @@
 ![](img/vim.png)
 
 
+## PARAGRAPHS
+
+This is a paragraph (plain text)
+
+This is another paragraph
+
+
 ## NUMBERED LIST
 
 1. This is how a numbered list
