@@ -3,10 +3,15 @@
 #>
 #> Commands:
 #>
-#>   slideshow:     generate and show slides (default)
-#>   generate:      generate slides only
-#>   open:          open slides in presentation folder (no file needed)
+#>   slideshow      generate and show slides (default)
+#>   generate       generate slides only
+#>   open           open slides in presentation folder (no file needed)
+#>
+#> Options:
+#>
+#>   --no-ascii     skip ascii headers
 
+require "optparse"
 require "vimdeck"
 
 def usage
@@ -15,54 +20,43 @@ def usage
   end
 end
 
-def check_file(file)
-  if !File.exists?(file)
+def check_file(file, opt_parser)
+  if !file || !File.exists?(file)
     usage
     puts "\nFile does not exist! #{file}"
     exit 0
   end
 end
 
-if ARGV.include?("--help") || ARGV.include?("-h")
-  usage
-  exit 0
+options = {}
+
+opt_parser = OptionParser.new do |opt|
+  opt.on("-A", "--no-ascii") do
+    options[:no_ascii] = true
+  end
 end
 
-if ARGV.length == 0
-  usage
-  exit 0
-elsif ARGV.length == 1
-  if ARGV[0] == "open"
-    Vimdeck::Slideshow.open
-  else
-    file = ARGV[0]
-    check_file file
+opt_parser.parse!
 
-    Vimdeck::Slideshow.start(ARGV[0])
-  end
-elsif ARGV.length == 2
-  command = ARGV[0]
-  file = ARGV[1]
+file = ARGV.length > 1 ? ARGV[1] : ARGV[0]
 
-  if command != "slideshow" && command != "generate" && command != "open"
-    usage
-    exit 0
-  end
+if !ARGV[0] || ( ARGV[0] && ARGV[0] != "open" )
+  check_file(file, opt_parser)
+end
 
-  if command == "open"
+case ARGV[0]
+when "slideshow"
+  Vimdeck::Slideshow.start(file, options)
+when "generate"
+  Vimdeck::Slideshow.generate(file, options)
+when "open"
+  if ARGV.length == 2
     puts "Vimdeck will open already existing slides"
     puts "File name will be ignored"
     sleep 3
-  else
-    check_file file
   end
 
-  case command
-  when "slideshow"
-    Vimdeck::Slideshow.start(file)
-  when "generate"
-    Vimdeck::Slideshow.generate(file)
-  else # open
-    Vimdeck::Slideshow.open()
-  end
+  Vimdeck::Slideshow.open
+else
+  Vimdeck::Slideshow.start(file, options)
 end
