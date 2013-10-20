@@ -61,12 +61,16 @@ module Vimdeck
     end
 
     def header(title, level)
-      case level
-      when 1
-        Vimdeck::Ascii.header(title, "large") + "\n"
+      if !Vimdeck::Slideshow.options[:no_ascii]
+        case level
+        when 1
+          Vimdeck::Ascii.header(title, "large") + "\n"
 
-      when 2
-        Vimdeck::Ascii.header(title, "small") + "\n"
+        when 2
+          Vimdeck::Ascii.header(title, "small") + "\n"
+        end
+      else
+        title + "\n\n"
       end
     end
 
@@ -88,6 +92,12 @@ module Vimdeck
   end
 
   class Slideshow
+    @options = {}
+
+    def self.options
+      @options
+    end
+
     def self.slide_padding
       "        "
     end
@@ -97,7 +107,8 @@ module Vimdeck
       template.result(binding)
     end
 
-    def self.generate(filename)
+    def self.generate(filename, options)
+      @options = options
       slides = File.read(filename)
 
       renderer = Redcarpet::Markdown.new(Vimdeck::Render, :fenced_code_blocks => true)
@@ -192,8 +203,8 @@ module Vimdeck
       exec 'vim presentation/*.md -S presentation/script.vim'
     end
 
-    def self.start(filename)
-      generate(filename)
+    def self.start(filename, options)
+      generate(filename, options)
       open
     end
   end
