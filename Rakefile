@@ -5,6 +5,7 @@ VERSION = File.read(File.join(".", "VERSION"))
 
 desc "Build gem from gemspec"
 task :build do
+  system "rm *.gem"
   system "gem build vimdeck.gemspec"
 end
 
