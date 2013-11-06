@@ -10,16 +10,16 @@
 
 ## PARAGRAPHS
 
-This is a paragraph (plain text)
+This is a `paragraph` (plain text)
 
 This is another paragraph
 
 
 ## NUMBERED LIST
 
-1. This is how a numbered list
-2. Looks in vimdeck
-3. What do you think?
+1. This _is_ how a *numbered* list
+2. Looks in **vimdeck**
+3. What do ***you*** think?
 
 
 # BULLETS
