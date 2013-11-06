@@ -36,9 +36,9 @@ module Vimdeck
       :block_html, :list_item,
 
       # span-level calls
-      :autolink, :codespan, :double_emphasis,
-      :emphasis, :underline, :raw_html,
-      :triple_emphasis, :strikethrough,
+      :autolink,
+      :underline, :raw_html,
+      :strikethrough,
       :superscript,
 
       # footnotes
@@ -50,6 +50,22 @@ module Vimdeck
       define_method method do |*args|
         args.first
       end
+    end
+
+    def code_span(text)
+      return "`#{text}`"
+    end
+
+    def emphasis(text)
+      return "*#{text}*"
+    end
+
+    def double_emphasis(text)
+      return "**#{text}**"
+    end
+
+    def triple_emphasis(text)
+      return "***#{text}***"
     end
 
     def list(content, type)
@@ -64,10 +80,19 @@ module Vimdeck
       if !Vimdeck::Slideshow.options[:no_ascii]
         case level
         when 1
-          Vimdeck::Ascii.header(title, "large") + "\n"
-
+          heading = Vimdeck::Ascii.header(title, "large")
+          if Vimdeck::Slideshow.options[:no_indent]
+            heading = "    " + heading.gsub( /\n/, "\n    " ) + "\n"
+          else
+            heading + "\n"
+          end
         when 2
-          Vimdeck::Ascii.header(title, "small") + "\n"
+          heading = Vimdeck::Ascii.header(title, "small")
+          if Vimdeck::Slideshow.options[:no_indent]
+            heading = "    " + heading.gsub( /\n/, "\n    " ) + "\n"
+          else
+            heading + "\n"
+          end
         end
       else
         title + "\n\n"
@@ -99,7 +124,7 @@ module Vimdeck
     end
 
     def self.slide_padding
-      "        "
+      @options[:no_indent] ? "" : "        "
     end
 
     def self.script_template
