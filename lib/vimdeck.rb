@@ -4,6 +4,7 @@ require 'artii'
 require 'asciiart'
 require 'erb'
 require 'redcarpet'
+require 'htmlentities'
 
 module Vimdeck
   # Helper methods for ascii art conversion
@@ -213,6 +214,14 @@ module Vimdeck
 
         File.open("presentation/slide#{slide_num}.md", "w") do |file|
           file.write slide
+        end
+
+        if @options[:html]
+          puts "HTML"
+          coder = HTMLEntities.new
+          File.open("presentation/index.html", "a") do |file|
+            file.write "<pre>" + coder.encode(slide) + "</pre>\n\n"
+          end
         end
 
         @buffers << buffer

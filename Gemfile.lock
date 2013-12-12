@@ -5,6 +5,7 @@ GEM
     asciiart (0.0.5)
       rainbow
       rmagick
+    htmlentities (4.3.1)
     rainbow (1.1.4)
     rake (10.1.0)
     redcarpet (2.2.2)
@@ -16,5 +17,6 @@ PLATFORMS
 DEPENDENCIES
   artii
   asciiart
+  htmlentities
   rake
   redcarpet

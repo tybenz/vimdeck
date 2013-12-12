@@ -24,23 +24,23 @@ This is another paragraph
 
 # BULLETS
 
-• First{~
-• Second
-• Third~}
+- First{~
+- Second
+- Third~}
 
 
 # BULLETS
 
-{~• First~}
-• Second{~
-• Third~}
+{~- First~}
+- Second{~
+- Third~}
 
 
 # BULLETS
 
-{~• First
-• Second~}
-• Third
+{~- First
+- Second~}
+- Third
 
 
 ## CODE
