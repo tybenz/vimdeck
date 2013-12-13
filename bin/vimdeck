@@ -3,13 +3,14 @@
 #>
 #> Commands:
 #>
-#>   slideshow      generate and show slides (default)
-#>   generate       generate slides only
-#>   open           open slides in presentation folder (no file needed)
+#>   slideshow          generate and show slides (default)
+#>   generate           generate slides only
+#>   open               open slides in presentation folder (no file needed)
 #>
 #> Options:
 #>
-#>   --no-ascii     skip ascii headers
+#    --no-indent, -I    skip indentation
+#>   --no-ascii, -A     skip ascii headers
 
 require "optparse"
 require "vimdeck"
