@@ -196,7 +196,7 @@ module Vimdeck
         # Prepending each line with slide_padding
         # Removing trailing spaces
         # Add newlines at end of the file to hide the slide identifier
-        slide = slide_padding + slide.gsub( /\n/, "\n#{slide_padding}" ).gsub( / *$/, "" ) + ("\n" * 80) + "slide #{i+1}"
+        slide = slide_padding + slide.gsub( /\n/, "\n#{slide_padding}" ).gsub( / *$/, "" ) + ("\n" * 80) + "slide #{slide_num}"
 
         # Buffers comments refers to items that need to be less focused/"unhighlighted"
         # We add a regex to the vimscript for each slide with "comments"
@@ -206,7 +206,7 @@ module Vimdeck
         buffer[:comments] = []
         while match && match[1] && match.post_match do
           slide.sub!(regex, match[1])
-          pattern = match[1] + "||(||_.*slide #{i+1}||)||@="
+          pattern = match[1] + "||(||_.*slide #{slide_num}||)||@="
           buffer[:comments] << pattern.gsub(/\n/, "||n").gsub(/\[/, "||[").gsub(/\]/, "||]").gsub(/\|/, "\\").gsub(/\"/, "\\\"")
           match = match.post_match.match(regex)
         end
