@@ -130,3 +130,7 @@ Images are even converted to ascii art!
 ---------------------
 
 Made by [tybenz](http://github.com/tybenz): [tybenz.com](http://tybenz.com) // [@tybenz](http://twitter.com/tybenz)
+
+
+[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/tybenz/vimdeck/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
+
