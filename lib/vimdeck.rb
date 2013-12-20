@@ -180,7 +180,8 @@ module Vimdeck
         code = nil
         code = slide.match( /```([^\n]*)\n.*\n```/m )
         if code
-          buffer[:code] = { :language => code[1] }
+          buffer[:code] = []
+          code_hash = { :language => code[1] }
           code_height = code[0].split("\n").length - 2
           code = code[0].gsub( /```[^\n]*\n/, '' ).gsub( /\n```/, '' )
           slide = slide.gsub( /```[^\n]*\n/, '' ).gsub( /\n```/, '' )
@@ -188,9 +189,10 @@ module Vimdeck
           if code_height > 0
             start = slide.index(code)
             start = slide[0..start].split("\n").length
-            buffer[:code][:end] = code_height + start - 1
-            buffer[:code][:start] = start
+            code_hash[:end] = code_height + start - 1
+            code_hash[:start] = start
           end
+          buffer[:code] << code_hash
         end
 
         # Prepending each line with slide_padding

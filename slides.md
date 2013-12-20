@@ -162,4 +162,72 @@ end~}
 ```
 
 
+## CODE PT 2
+
+```javascript
+(function( window, $, undefined ) {
+    $( '.hello' ).on( 'click', function sayHello() {
+        alert( 'Why, hello there!' );
+    });
+})( window, jQuery );
+```
+
+```html
+<body>
+    <a href="#" class="hello">Hello!</a>
+</body>
+```
+
+
+## CODE PT 2
+
+```javascript
+{~(function( window, $, undefined ) {
+    $( '.hello' ).on( 'click', function sayHello() {~}
+        alert( 'Why, hello there!' );{~
+    });
+})( window, jQuery );~}
+```
+
+```html
+<body>
+    <a href="#" class="hello">Hello!</a>
+</body>
+```
+
+
+## CODE PT 2
+
+```javascript
+(function( window, $, undefined ) {
+    $( '.hello' ).on( 'click', function sayHello() {
+        alert( 'Why, hello there!' );
+    });
+})( window, jQuery );
+```
+
+```html
+{~<body>~}
+    <a href="#" class="hello">Hello!</a>
+{~</body>~}
+```
+
+
+## CODE PT 2
+
+```javascript
+{~(function( window, $, undefined ) {
+    $( '.hello' ).on( 'click', function sayHello() {~}
+        alert( 'Why, hello there!' );{~
+    });
+})( window, jQuery );
+```
+
+```html
+<body>
+    <a href="#" class="hello">Hello!</a>
+</body>~}
+```
+
+
 # The End!
