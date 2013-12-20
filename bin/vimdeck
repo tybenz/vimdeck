@@ -14,6 +14,7 @@
 
 require "optparse"
 require "vimdeck"
+# require_relative File.dirname(__FILE__)+"/../../lib/vimdeck.rb"
 
 def usage
   File.read(__FILE__).split("\n").grep(/^#>/).each do |line|

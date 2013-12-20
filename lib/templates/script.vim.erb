@@ -9,7 +9,9 @@ noremap Q :q<CR>
 <% @buffers.each do |buffer| %>
 b <%= buffer[:num] %>
 <% if buffer[:code] %>
-<%= buffer[:code][:start] %>,<%= buffer[:code][:end] %>SyntaxInclude <%= buffer[:code][:language] %>
+<% buffer[:code].each do |code| %>
+<%= code[:start] %>,<%= code[:end] %>SyntaxInclude <%= code[:language] %>
+<% end %>
 <% end %>
 <% buffer[:comments].each do |comment| %>
 call matchadd("Comment", "<%= comment %>")
