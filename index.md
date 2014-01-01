@@ -1,7 +1,7 @@
 ---
 title: Vimdeck
 nav: projects
-subnav: home
+subnav: vimdeck-home
 layout: default
 ---
 

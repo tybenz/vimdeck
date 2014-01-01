@@ -1,7 +1,7 @@
 ---
 title: Vimdeck - Docs
 nav: projects
-subnav: docs
+subnav: vimdeck-docs
 layout: default
 ---
 
