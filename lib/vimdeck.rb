@@ -214,7 +214,7 @@ module Vimdeck
         end
 
         File.open("presentation/slide#{slide_num}.md", "w") do |file|
-          file.write slide
+          file.write(slide + "\n")
         end
 
         @buffers << buffer
