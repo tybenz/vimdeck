@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.files        = ['bin/vimdeck']
   s.homepage     = 'http://github.com/tybenz/vimdeck'
   s.license      = 'MIT'
-  s.require_path = ['lib']
+  s.require_paths = ['lib']
   s.files        = FileList['**/**/*'].exclude /.git|.svn|.DS_Store/
   s.bindir       = 'bin'
   s.executables  = ['vimdeck']
