@@ -9,10 +9,18 @@ module Vimdeck
   # Helper methods for ascii art conversion
   class Ascii
     def self.header(text, type)
-      if type == "large"
-        font = Artii::Base.new :font => 'slant'
+      if font_name = Vimdeck::Slideshow.options[:header_font]
+        begin
+          font = Artii::Base.new :font => font_name
+        rescue
+          raise "Incorrect figlet font name"
+        end
       else
-        font = Artii::Base.new :font => 'smslant'
+        if type == "large"
+          font = Artii::Base.new :font => 'slant'
+        else
+          font = Artii::Base.new :font => 'smslant'
+        end
       end
 
       font.asciify(text)

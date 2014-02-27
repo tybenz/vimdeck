@@ -9,8 +9,10 @@
 #>
 #> Options:
 #>
-#    --no-indent, -I    skip indentation
+#>   --no-indent, -I    skip indentation
 #>   --no-ascii, -A     skip ascii headers
+#>   --header-font, -h  specify header font (http://www.figlet.org/fontdb.cgi)
+#>                      foregoes the ability to have small and large headers
 
 require "optparse"
 require "vimdeck"
@@ -40,13 +42,22 @@ opt_parser = OptionParser.new do |opt|
   opt.on("-I", "--no-indent") do
     options[:no_indent] = true
   end
+
+  opt.on("-h", "--header-font STRING", String) do |opt|
+    options[:header_font] = opt
+  end
 end
 
 opt_parser.parse!
 
 file = ARGV.length > 1 ? ARGV[1] : ARGV[0]
 
-if !ARGV[0] || ( ARGV[0] && ARGV[0] != "open" )
+if !ARGV[0]
+  usage
+  exit 0
+end
+
+if ARGV[0] && ARGV[0] != "open"
   check_file(file, opt_parser)
 end
 
