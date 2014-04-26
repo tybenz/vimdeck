@@ -20,7 +20,7 @@ Gem::Specification.new do |s|
   s.files        = FileList['**/**/*'].exclude /.git|.svn|.DS_Store/
   s.bindir       = 'bin'
   s.executables  = ['vimdeck']
-  s.add_runtime_dependency 'artii'
-  s.add_runtime_dependency 'asciiart'
-  s.add_runtime_dependency 'redcarpet'
+  s.add_runtime_dependency 'artii', '~>2.0.4'
+  s.add_runtime_dependency 'asciiart', '~>0.0.7'
+  s.add_runtime_dependency 'redcarpet', '~>3.1.1'
 end
