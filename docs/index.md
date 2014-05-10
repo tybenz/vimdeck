@@ -15,6 +15,8 @@ Install the VIM plugin [SyntaxRange](https://github.com/vim-scripts/SyntaxRange)
 gem install vimdeck
 {% endhighlight %}
 
+If you have problems getting RMagick to install, try installing [ImageMagick](http://www.imagemagick.org/) explicitly first.
+
 
 #### Usage
 
