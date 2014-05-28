@@ -84,7 +84,7 @@ module Vimdeck
       end
     end
 
-    def header(title, level, anchor)
+    def header(title, level)
       if !Vimdeck::Slideshow.options[:no_ascii]
         case level
         when 1

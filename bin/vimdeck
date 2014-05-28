@@ -15,8 +15,11 @@
 #>                      foregoes the ability to have small and large headers
 
 require "optparse"
-require "vimdeck"
-# require_relative File.dirname(__FILE__)+"/../../lib/vimdeck.rb"
+if ENV["VIMDECK_DEBUG"]
+  require_relative File.dirname(__FILE__)+"/../../lib/vimdeck.rb"
+else
+  require "vimdeck"
+end
 
 def usage
   File.read(__FILE__).split("\n").grep(/^#>/).each do |line|
