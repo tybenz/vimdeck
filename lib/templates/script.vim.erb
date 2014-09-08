@@ -2,9 +2,19 @@ set nonumber
 set hidden
 noremap <PageUp> :bp<CR>
 noremap <Left> :bp<CR>
+<% if @options[:mouse_enabled] %>
+noremap <RightMouse> :bp<CR>
+<% end %>
 noremap <PageDown> :bn<CR>
 noremap <Right> :bn<CR>
+<% if @options[:mouse_enabled] %>
+noremap <LeftMouse> :bn<CR>
+<% end %>
 noremap Q :q<CR>
+
+<% if @options[:mouse_enabled] %>
+set mouse=a
+<% end %>
 
 <% @buffers.each do |buffer| %>
 b <%= buffer[:num] %>
