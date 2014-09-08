@@ -78,9 +78,9 @@ module Vimdeck
 
     def list(content, type)
       if type == :unordered
-        "<!~#{content}~!>"
+        "<!~#{content}~!>\n\n"
       else
-        "<@~#{content}~@>"
+        "<@~#{content}~@>\n\n"
       end
     end
 
@@ -156,7 +156,7 @@ module Vimdeck
         slide_num = "%03d" % (i+1)
         slide = renderer.render(slide)
 
-        regex = /\<\@\~(.*)\~\@\>/m
+        regex = /\<\@\~(.*?)\~\@\>/m
         match = slide.match(regex)
         while match && match[1] && match.post_match do
           list = match[1].split("\n")
@@ -169,7 +169,7 @@ module Vimdeck
           match = match.post_match.match(regex)
         end
 
-        regex = /\<\!\~(.*)\~\!\>/m
+        regex = /\<\!\~(.*?)\~\!\>/m
         match = slide.match(regex)
         while match && match[1] && match.post_match do
           list = match[1].split("\n")
