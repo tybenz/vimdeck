@@ -14,8 +14,8 @@ noremap Q :q<CR>
 
 <% if @options[:mouse_enabled] -%>
 set mouse=a
-<% end -%>
 
+<% end -%>
 <% @buffers.each do |buffer| -%>
 b <%= buffer[:num] %>
 <% if buffer[:code] -%>
