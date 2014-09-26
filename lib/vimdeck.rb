@@ -136,7 +136,7 @@ module Vimdeck
     end
 
     def self.script_template
-      template = ERB.new(File.read(File.dirname(__FILE__) + "/templates/script.vim.erb"))
+      template = ERB.new(File.read(File.dirname(__FILE__) + "/templates/script.vim.erb"), nil, '-')
       template.result(binding)
     end
 
