@@ -2,29 +2,29 @@ set nonumber
 set hidden
 noremap <PageUp> :bp<CR>
 noremap <Left> :bp<CR>
-<% if @options[:mouse_enabled] %>
+<% if @options[:mouse_enabled] -%>
 noremap <RightMouse> :bp<CR>
-<% end %>
+<% end -%>
 noremap <PageDown> :bn<CR>
 noremap <Right> :bn<CR>
-<% if @options[:mouse_enabled] %>
+<% if @options[:mouse_enabled] -%>
 noremap <LeftMouse> :bn<CR>
-<% end %>
+<% end -%>
 noremap Q :q<CR>
 
-<% if @options[:mouse_enabled] %>
+<% if @options[:mouse_enabled] -%>
 set mouse=a
-<% end %>
+<% end -%>
 
-<% @buffers.each do |buffer| %>
+<% @buffers.each do |buffer| -%>
 b <%= buffer[:num] %>
-<% if buffer[:code] %>
-<% buffer[:code].each do |code| %>
+<% if buffer[:code] -%>
+<% buffer[:code].each do |code| -%>
 <%= code[:start] %>,<%= code[:end] %>SyntaxInclude <%= code[:language] %>
-<% end %>
-<% end %>
-<% buffer[:comments].each do |comment| %>
+<% end -%>
+<% end -%>
+<% buffer[:comments].each do |comment| -%>
 call matchadd("Comment", "<%= comment %>")
-<% end %>
-<% end %>
+<% end -%>
+<% end -%>
 b 1
