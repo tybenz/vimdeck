@@ -1,5 +1,5 @@
-presentation/*.md
-presentation/*.vim
+presentation/*
+!presentation/.gitkeep
 *.swp
 .DS_Store
 *.gem

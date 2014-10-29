@@ -12,6 +12,7 @@
 #>   --mouse, -m        mouse support for navigating slides
 #>   --no-indent, -I    skip indentation
 #>   --no-ascii, -A     skip ascii headers
+#>   --no-filetype, -n  use vim's plaintext syntax highlighting
 #>   --header-font, -h  specify header font (http://www.figlet.org/fontdb.cgi)
 #>                      foregoes the ability to have small and large headers
 
@@ -47,12 +48,16 @@ opt_parser = OptionParser.new do |opt|
     options[:no_indent] = true
   end
 
-  opt.on("-h", "--header-font STRING", String) do |opt|
-    options[:header_font] = opt
+  opt.on("-h", "--header-font STRING", String) do |option|
+    options[:header_font] = option
   end
 
   opt.on("-m", "--mouse") do
     options[:mouse_enabled] = true
+  end
+
+  opt.on("-n", "--no-filetype") do
+    options[:no_filetype] = true
   end
 end
 

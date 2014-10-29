@@ -1,7 +1,10 @@
 set nonumber
 set hidden
+<% if @options[:no_filetype] %>
+argdo set filetype=txt
 set filetype=txt
 filetype off
+<% end %>
 
 noremap <PageUp> :bp<CR>
 noremap <Left> :bp<CR>

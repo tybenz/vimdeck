@@ -142,6 +142,7 @@ module Vimdeck
 
     def self.generate(filename, options)
       @options = options
+      extension = options[:no_filetype] ? ".txt" : ".md"
       slides = File.read(filename)
 
       renderer = Redcarpet::Markdown.new(Vimdeck::Render, :fenced_code_blocks => true)
@@ -221,7 +222,7 @@ module Vimdeck
           match = match.post_match.match(regex)
         end
 
-        File.open("presentation/slide#{slide_num}.md", "w") do |file|
+        File.open("presentation/slide#{slide_num}#{extension}", "w") do |file|
           file.write(slide + "\n")
         end
 
@@ -235,7 +236,8 @@ module Vimdeck
     end
 
     def self.open
-      exec 'vim presentation/*.md -S presentation/script.vim'
+      extension = @options[:no_filetype] ? ".txt" : ".md"
+      exec "vim presentation/*#{extension} -S presentation/script.vim"
     end
 
     def self.start(filename, options)
