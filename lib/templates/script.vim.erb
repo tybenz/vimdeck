@@ -1,4 +1,7 @@
 set nonumber
+if exists('+relativenumber')
+  set norelativenumber
+end
 set hidden
 <% if @options[:no_filetype] %>
 argdo set filetype=txt
