@@ -85,21 +85,23 @@ module Vimdeck
     end
 
     def header(title, level)
+      margin = Vimdeck::Slideshow.options[:header_margin]
+      linebreak = margin ? "\n" * margin : "\n"
       if !Vimdeck::Slideshow.options[:no_ascii]
         case level
         when 1
           heading = Vimdeck::Ascii.header(title, "large")
           if Vimdeck::Slideshow.options[:no_indent]
-            heading = "    " + heading.gsub( /\n/, "\n    " ) + "\n"
+            heading = "    " + heading.gsub( /\n/, "\n    " ) + linebreak
           else
-            heading + "\n"
+            heading + linebreak
           end
         when 2
           heading = Vimdeck::Ascii.header(title, "small")
           if Vimdeck::Slideshow.options[:no_indent]
-            heading = "    " + heading.gsub( /\n/, "\n    " ) + "\n"
+            heading = "    " + heading.gsub( /\n/, "\n    " ) + linebreak
           else
-            heading + "\n"
+            heading + linebreak
           end
         end
       else

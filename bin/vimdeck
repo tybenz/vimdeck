@@ -9,12 +9,13 @@
 #>
 #> Options:
 #>
-#>   --mouse, -m        mouse support for navigating slides
-#>   --no-indent, -I    skip indentation
-#>   --no-ascii, -A     skip ascii headers
-#>   --no-filetype, -n  use vim's plaintext syntax highlighting
-#>   --header-font, -h  specify header font (http://www.figlet.org/fontdb.cgi)
-#>                      foregoes the ability to have small and large headers
+#>   --mouse, -m           mouse support for navigating slides
+#>   --no-indent, -I       skip indentation
+#>   --no-ascii, -A        skip ascii headers
+#>   --no-filetype, -n     use vim's plaintext syntax highlighting
+#>   --header-margin, -m   bottom margin for headers. default: 1
+#>   --header-font, -h     specify header font (http://www.figlet.org/fontdb.cgi)
+#>                         foregoes the ability to have small and large headers
 
 require "optparse"
 if ENV["VIMDECK_DEBUG"]
@@ -58,6 +59,10 @@ opt_parser = OptionParser.new do |opt|
 
   opt.on("-n", "--no-filetype") do
     options[:no_filetype] = true
+  end
+
+  opt.on("-m", "--header-margin NUMBER", Numeric) do |option|
+    options[:header_margin] = option
   end
 end
 
