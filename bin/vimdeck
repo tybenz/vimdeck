@@ -16,6 +16,7 @@
 #>   --header-margin, -m   bottom margin for headers. default: 1
 #>   --header-font, -h     specify header font (http://www.figlet.org/fontdb.cgi)
 #>                         foregoes the ability to have small and large headers
+#>   --editor, -e          specify editor to use (e.g., vim, mvim)
 
 require "optparse"
 if ENV["VIMDECK_DEBUG"]
@@ -63,6 +64,10 @@ opt_parser = OptionParser.new do |opt|
 
   opt.on("-m", "--header-margin NUMBER", Numeric) do |option|
     options[:header_margin] = option
+  end
+
+  opt.on("-e", "--editor EDITOR", String) do |option|
+    options[:editor] = option
   end
 end
 

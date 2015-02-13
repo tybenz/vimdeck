@@ -239,7 +239,8 @@ module Vimdeck
 
     def self.open
       extension = @options[:no_filetype] ? ".txt" : ".md"
-      exec "vim presentation/*#{extension} -S presentation/script.vim"
+      editor = options[:editor] || "vim"
+      exec "#{editor} presentation/*#{extension} -S presentation/script.vim"
     end
 
     def self.start(filename, options)
