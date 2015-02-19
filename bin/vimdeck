@@ -66,6 +66,10 @@ opt_parser = OptionParser.new do |opt|
     options[:header_margin] = option
   end
 
+  opt.on("-d", "--dos-newlines") do
+    options[:dos_newlines] = true
+  end
+
   opt.on("-e", "--editor EDITOR", String) do |option|
     if option == "vim" || option == "mvim"
       options[:editor] = option
