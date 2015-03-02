@@ -71,7 +71,7 @@ opt_parser = OptionParser.new do |opt|
   end
 
   opt.on("-e", "--editor EDITOR", String) do |option|
-    if option == "vim" || option == "mvim"
+    if option == "vim" || option == "mvim" || option == "nvim"
       options[:editor] = option
     else
       raise "Not a valid editor: #{option}"
