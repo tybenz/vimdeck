@@ -21,7 +21,7 @@ Install the VIM plugin [SyntaxRange](https://github.com/vim-scripts/SyntaxRange)
 gem install vimdeck
 ```
 
-If you have problems getting RMagick to install, try installing [ImageMagick](http://www.imagemagick.org/) explicitly first.
+If you have problems getting RMagick to install, try installing [ImageMagick](http://www.imagemagick.org/) explicitly first. You may also need [MagickWand](http://www.imagemagick.org/script/magick-wand.php) and Ruby Development tools (libmagickwand-dev and ruby-dev respectively on Ubuntu).
 
 
 ## Usage
@@ -47,7 +47,7 @@ This is a tool meant for VIM users. In other words, it is not a VIM plugin
 
 The only hard dependency is [SyntaxRange](https://github.com/vim-scripts/SyntaxRange).
 
-Other than that you may need some syntax highlighting plugins to handle the code syntax highlighting.
+Other than that you may need some syntax highlighting plugins to handle the code syntax highlighting. [vim-scripts/ingo-library](https://github.com/vim-scripts/ingo-library) may be required for syntax highlighting.
 
 
 ## A Note About Markdown
