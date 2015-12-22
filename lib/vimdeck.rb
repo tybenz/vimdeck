@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 
-require 'artii'
 require 'asciiart'
+require 'artii'
 require 'erb'
 require 'redcarpet'
 

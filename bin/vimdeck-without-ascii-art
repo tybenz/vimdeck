@@ -1,0 +1,110 @@
+#!/usr/bin/env ruby
+#> Usage: vimdeck [<command>] [<file>]
+#>
+#> Commands:
+#>
+#>   slideshow          generate and show slides (default)
+#>   generate           generate slides only
+#>   open               open slides in presentation folder (no file needed)
+#>
+#> Options:
+#>
+#>   --mouse, -m           mouse support for navigating slides
+#>   --no-indent, -I       skip indentation
+#>   --no-ascii, -A        skip ascii headers
+#>   --no-filetype, -n     use vim's plaintext syntax highlighting
+#>   --header-margin, -m   bottom margin for headers. default: 1
+#>   --header-font, -h     specify header font (http://www.figlet.org/fontdb.cgi)
+#>                         foregoes the ability to have small and large headers
+#>   --editor, -e          specify editor to use (e.g., vim, mvim)
+
+require "optparse"
+if ENV["VIMDECK_DEBUG"]
+  require_relative File.dirname(__FILE__)+"/../../lib/vimdeck.rb"
+else
+  require "vimdeck"
+end
+
+def usage
+  File.read(__FILE__).split("\n").grep(/^#>/).each do |line|
+    puts line[3..-1]
+  end
+end
+
+def check_file(file, opt_parser)
+  if !file || !File.exists?(file)
+    usage
+    puts "\nFile does not exist! #{file}"
+    exit 0
+  end
+end
+
+options = {}
+
+opt_parser = OptionParser.new do |opt|
+  opt.on("-A", "--no-ascii") do
+    options[:no_ascii] = true
+  end
+
+  opt.on("-I", "--no-indent") do
+    options[:no_indent] = true
+  end
+
+  opt.on("-h", "--header-font STRING", String) do |option|
+    options[:header_font] = option
+  end
+
+  opt.on("-m", "--mouse") do
+    options[:mouse_enabled] = true
+  end
+
+  opt.on("-n", "--no-filetype") do
+    options[:no_filetype] = true
+  end
+
+  opt.on("-m", "--header-margin NUMBER", Numeric) do |option|
+    options[:header_margin] = option
+  end
+
+  opt.on("-d", "--dos-newlines") do
+    options[:dos_newlines] = true
+  end
+
+  opt.on("-e", "--editor EDITOR", String) do |option|
+    if option == "vim" || option == "mvim" || option == "nvim"
+      options[:editor] = option
+    else
+      raise "Not a valid editor: #{option}"
+    end
+  end
+end
+
+opt_parser.parse!
+
+file = ARGV.length > 1 ? ARGV[1] : ARGV[0]
+
+if !ARGV[0]
+  usage
+  exit 0
+end
+
+if ARGV[0] && ARGV[0] != "open"
+  check_file(file, opt_parser)
+end
+
+case ARGV[0]
+when "slideshow"
+  Vimdeck::Slideshow.start(file, options)
+when "generate"
+  Vimdeck::Slideshow.generate(file, options)
+when "open"
+  if ARGV.length == 2
+    puts "Vimdeck will open already existing slides"
+    puts "File name will be ignored"
+    sleep 3
+  end
+
+  Vimdeck::Slideshow.open
+else
+  Vimdeck::Slideshow.start(file, options)
+end

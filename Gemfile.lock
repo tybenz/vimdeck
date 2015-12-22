@@ -1,20 +1,20 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    artii (2.0.4)
-    asciiart (0.0.7)
-      rainbow
-      rmagick
+    artii (2.1.1)
     rainbow (2.0.0)
     rake (10.1.1)
+    rasciiart (0.0.9)
+      rainbow (= 2.0.0)
+      rmagick (= 2.15.4)
     redcarpet (3.1.2)
-    rmagick (2.13.2)
+    rmagick (2.15.4)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
-  artii (~> 2.0.4)
-  asciiart (~> 0.0.7)
+  artii (~> 2.1.1)
   rake
+  rasciiart (~> 0.0.9)
   redcarpet (~> 3.1.2)
