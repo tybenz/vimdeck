@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 
 require 'artii'
-require 'asciiart'
 require 'erb'
 require 'redcarpet'
 
@@ -29,8 +28,8 @@ module Vimdeck
     end
 
     def self.image(img)
-      a = AsciiArt.new(img)
-      a.to_ascii_art width: 30
+      # a = AsciiArt.new(img)
+      # a.to_ascii_art width: 30
     end
   end
 
@@ -124,7 +123,7 @@ module Vimdeck
     end
 
     def image(image, title, alt_text)
-      Vimdeck::Ascii.image(image)
+      # Vimdeck::Ascii.image(image)
     end
   end
 
