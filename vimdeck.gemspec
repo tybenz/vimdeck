@@ -6,7 +6,7 @@ require 'bundler'
 require 'rake'
 
 Gem::Specification.new do |s|
-  s.name         = 'vimdeck'
+  s.name         = 'vimdeck-without-ascii-art'
   s.version      = File.read('VERSION').strip
   s.date         = '2013-09-18'
   s.summary      = 'VIMDECK'
