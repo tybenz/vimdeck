@@ -31,6 +31,13 @@ If you have problems getting RMagick to install, try installing [ImageMagick](ht
 2. Run `vimdeck <file_name.md>` and it will generate a file for each slide and open them in VIM
 
 
+## Docker
+
+It is also possible to run vimdeck via Docker image.
+
+Run `docker run -it --rm -v `pwd`:/slides malikoth/vimdeck <file_name.md>
+
+
 ## VIM Script
 
 Vimdeck will also provide a script file that will set up keybindings for you.
