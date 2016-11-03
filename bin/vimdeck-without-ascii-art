@@ -13,7 +13,7 @@
 #>   --no-indent, -I       skip indentation
 #>   --no-ascii, -A        skip ascii headers
 #>   --no-filetype, -n     use vim's plaintext syntax highlighting
-#>   --header-margin, -m   bottom margin for headers. default: 1
+#>   --header-margin, -M   bottom margin for headers. default: 1
 #>   --header-font, -h     specify header font (http://www.figlet.org/fontdb.cgi)
 #>                         foregoes the ability to have small and large headers
 #>   --editor, -e          specify editor to use (e.g., vim, mvim)
@@ -62,7 +62,7 @@ opt_parser = OptionParser.new do |opt|
     options[:no_filetype] = true
   end
 
-  opt.on("-m", "--header-margin NUMBER", Numeric) do |option|
+  opt.on("-M", "--header-margin NUMBER", Numeric) do |option|
     options[:header_margin] = option
   end
 
