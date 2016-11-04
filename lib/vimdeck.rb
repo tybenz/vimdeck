@@ -136,7 +136,15 @@ module Vimdeck
     end
 
     def self.slide_padding
-      @options[:no_indent] ? "" : "        "
+      padding = "        "
+
+      if @options[:no_indent]
+        padding = ""
+      elsif @options[:padding]
+        padding *= @options[:padding]
+      end
+
+      padding
     end
 
     def self.script_template
