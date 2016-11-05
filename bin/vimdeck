@@ -17,6 +17,7 @@
 #>   --header-font, -h     specify header font (http://www.figlet.org/fontdb.cgi)
 #>                         foregoes the ability to have small and large headers
 #>   --editor, -e          specify editor to use (e.g., vim, mvim)
+#>   --padding, -p         specify how much left padding is needed. default: 1
 
 require "optparse"
 if ENV["VIMDECK_DEBUG"]
@@ -76,6 +77,10 @@ opt_parser = OptionParser.new do |opt|
     else
       raise "Not a valid editor: #{option}"
     end
+  end
+
+  opt.on("-p", "--padding NUMBER", Numeric) do |option|
+    options[:padding] = option
   end
 end
 
