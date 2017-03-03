@@ -23,6 +23,13 @@ gem install vimdeck
 
 If you have problems getting RMagick to install, try installing [ImageMagick](http://www.imagemagick.org/) explicitly first. You may also need [MagickWand](http://www.imagemagick.org/script/magick-wand.php) and Ruby Development tools (libmagickwand-dev and ruby-dev respectively on Ubuntu).
 
+**Note:** if you're on Mac OS Sierra, you may need to run the following command to get RMagick/vimdeck to install:
+
+```
+brew install imagemagick@6
+PKG_CONFIG_PATH=/usr/local/opt/imagemagick@6/lib/pkgconfig gem install vimdeck
+```
+
 
 ## Usage
 
