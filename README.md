@@ -115,7 +115,7 @@ and not write it as a VIM script. Ruby was my language of choice only because th
 were implemented as ruby gems. Plus, I &hearts; ruby.
 
 
-##Screenshots:
+## Screenshots:
 
 
 Vimdeck converts h1s and h2s into ascii art
