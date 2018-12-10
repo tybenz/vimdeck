@@ -1,5 +1,3 @@
-![](https://badge.fury.io/rb/vimdeck.svg)
-
 # Vimdeck [![Gem Version](https://badge.fury.io/rb/vimdeck.png)](http://badge.fury.io/rb/vimdeck)
 
 VIM as a presentation tool
