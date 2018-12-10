@@ -27,7 +27,8 @@ If you have problems getting RMagick to install, try installing [ImageMagick](ht
 
 ```
 brew install imagemagick@6
-PKG_CONFIG_PATH=/usr/local/opt/imagemagick@6/lib/pkgconfig gem install vimdeck
+brew link imagemagick@6 --force
+gem install vimdeck
 ```
 
 
