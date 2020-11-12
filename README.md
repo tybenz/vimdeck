@@ -31,6 +31,12 @@ brew link imagemagick@6 --force
 gem install vimdeck
 ```
 
+Also, if you're getting errors about a missing pkg-config, doublecheck that you have pkg-config installed:
+
+```
+brew install pkg-config
+```
+
 
 ## Usage
 
