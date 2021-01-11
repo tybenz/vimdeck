@@ -7,7 +7,7 @@ GEM
     rasciiart (0.0.9)
       rainbow (= 2.0.0)
       rmagick (= 2.15.4)
-    redcarpet (3.1.2)
+    redcarpet (3.5.1)
     rmagick (2.15.4)
 
 PLATFORMS
@@ -17,4 +17,4 @@ DEPENDENCIES
   artii (~> 2.1.1)
   rake
   rasciiart (~> 0.0.9)
-  redcarpet (~> 3.1.2)
+  redcarpet (~> 3.5.1)
